@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+
+<form method = "post">
+		{% if comments %}
+		{% for comment in comments %}
+			<input type="hidden" name="naloga" value="{{comment}}">
+		{% endfor  %}
+	{% endif  %}
+	
+
+	{% if comments %}
+		<br>
+		<br>
+
+		<h2>All comments to important concepts </h2>
+		<ul>
+			{% for comment in comments  %}
+				<li>concept title: {{comment}} </li>
+			{% endfor  %}	
+		</ul>	
+	{% endif  %}
+</form>
+{% endblock %}

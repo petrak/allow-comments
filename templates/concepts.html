@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block content %}
+
+<form>
+	<h2>Add a Comment</h2>
+	<input type="text" name="naloga">
+	{% if comments %}
+		{% for comment in comments %}
+			<input type="hidden" name="naloga" value="{{comment}}">
+		{% endfor  %}
+	{% endif  %}
+	<button>Add</button>
+
+	<input type="hidden" name="lesson">
+	{% if items %}
+		{% for item in items %}
+			<input type="hidden" name="lesson" value="{{item}}">
+		{% endfor  %}
+	{% endif  %}
+	
+
+	{% if items %}
+		<br>
+		<br>
+
+		<h2>Important concepts Stage4 </h2>
+		<ul>
+			{% for item in items  %}
+				<li class="concept-title"><b>Concept Title: {{item[0:10]}}</b></li>
+				<div class="concept-description">Concept Description: {{item[10:]}}</div>
+			{% endfor  %}	
+		</ul>	
+	{% endif  %}
+
+	{% if comments %}
+		<br>
+		<br>
+
+		<h2>These are comments to important concepts </h2>
+		<ul>
+			{% for comment in comments  %}
+				<li>{{comment}} </li>
+			{% endfor  %}	
+		</ul>	
+	{% endif  %}
+</form>
+{% endblock %}
